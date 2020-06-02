@@ -12,4 +12,13 @@ app.get('/', (req, res) => {
   ]);
 });
 
+app.post('/users', (req, res) => {
+  const user = {
+    name: 'Hiago',
+    email: 'hiago@gmail.com'
+  };
+
+  return res.json(user);
+})
+
 app.listen(3333);
