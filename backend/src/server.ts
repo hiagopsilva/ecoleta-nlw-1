@@ -30,7 +30,7 @@ app.post('/users', (req, res) => {
   const data = req.body;
   
   const user = {
-    name: data.nome,
+    name: data.name,
     email: data.email,
   };
 
