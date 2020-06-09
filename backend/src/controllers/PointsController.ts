@@ -1,4 +1,4 @@
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 import knex from '../database/connection';
 
 class PointsController {
@@ -32,7 +32,7 @@ class PointsController {
     const items = await knex('items')
       .join('point_items', 'items.id', '=', 'point_items.item_id')
       .where('point_items.point_id', id)
-      .select('items.title')
+      .select('items.title');
 
     return res.json({ point, items });
   }
@@ -48,8 +48,6 @@ class PointsController {
       uf,
       items
     } = req.body;
-
-    console.log(req.body)
   
     const trx = await knex.transaction();
   
