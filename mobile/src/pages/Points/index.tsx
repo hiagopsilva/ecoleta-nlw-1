@@ -1,3 +1,105 @@
+import React from 'react';
+import Constants from 'expo-constants';
+import { Feather as Icon } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { SvgUri } from 'react-native-svg';
+
+const Points = () => {
+  const navigation = useNavigation();
+
+  function handleNavigateBack() {
+    navigation.goBack();
+  }
+  function handleNavigateToDetail() {
+    navigation.navigate('Detail');
+  }
+  
+  return (
+    <>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={handleNavigateBack} >
+          
+          <Icon name="arrow-left" size={20} color="#34cb79" />  
+        </TouchableOpacity>
+
+        <Text style={styles.title}>Bem Vindo.</Text>
+        <Text style={styles.description}>Encontre no mapa um ponto de coleta.</Text>
+
+        <View style={styles.mapContainer}>
+          <MapView 
+            style={styles.map} 
+            initialRegion={{
+              latitude: -23.6260084,
+              longitude: -46.7768741,
+              latitudeDelta: 0.014,
+              longitudeDelta: 0.014,
+            }}
+          >
+            <Marker 
+              style={styles.mapMarker}
+              onPress={handleNavigateToDetail}
+              coordinate={{
+                latitude: -23.6260084,
+                longitude: -46.7768741,
+              }}
+            >
+              <View style={styles.mapMarkerContainer}>
+                <Image style={styles.mapMarkerImage} source={{ uri: 'https://bemresolvida.com.br/wp-content/uploads/2019/09/Legendas-para-fotos-com-paisagens-02-740x522.jpg'}} />
+                <Text style={styles.mapMarkerTitle}>Mercado</Text>
+              </View>  
+            </Marker>
+          </MapView>
+        </View>
+      </View>
+
+      <View style={styles.itemsContainer}>
+        <ScrollView 
+          horizontal 
+          showsHorizontalScrollIndicator={false} 
+          contentContainerStyle={{ paddingHorizontal: 20 }}
+        >
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri width={42} heigth={42} uri="http://192.168.1.7:3333/uploads/lampadas.svg" />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri width={42} heigth={42} uri="http://192.168.1.7:3333/uploads/lampadas.svg" />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri width={42} heigth={42} uri="http://192.168.1.7:3333/uploads/lampadas.svg" />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri width={42} heigth={42} uri="http://192.168.1.7:3333/uploads/lampadas.svg" />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri width={42} heigth={42} uri="http://192.168.1.7:3333/uploads/lampadas.svg" />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri width={42} heigth={42} uri="http://192.168.1.7:3333/uploads/lampadas.svg" />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity style={styles.item} onPress={() => {}}>
+            <SvgUri width={42} heigth={42} uri="http://192.168.1.7:3333/uploads/lampadas.svg" />
+            <Text style={styles.itemTitle}>Lâmpadas</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
+    </>
+  )
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -94,3 +196,5 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
 });
+
+export default Points;
